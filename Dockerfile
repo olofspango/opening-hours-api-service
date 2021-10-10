@@ -1,0 +1,18 @@
+FROM node@sha256:83c73c59efb1fb2c373a0c7b4813413e8bbc482d95b5029d16ad589392a5fe31
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+ENV PGUSER="osp"
+ENV PGHOST=""
+ENV PGPASSWORD=""
+ENV PGDATABASE=""
+ENV PGPORT=5432
+
+EXPOSE 5000
+
+ENTRYPOINT ["node", "main.js"]
